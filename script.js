@@ -53,6 +53,8 @@ function updateDisplay(value) {
 
     // Keep the aria-label in sync for screen readers
     currentDisplay.setAttribute('aria-label', `Current value: ${value}`);
+
+    updateDecimalButton();
 }
 
 // Digit input
