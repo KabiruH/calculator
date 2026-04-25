@@ -152,7 +152,6 @@ function handleEquals() {
     clearOperatorHighlight();
 }
 
-// ── HIGHLIGHT ACTIVE OPERATOR ──
 // Adds a visual glow to whichever operator button is currently active
 function highlightOperator(activeOperator) {
     clearOperatorHighlight();
