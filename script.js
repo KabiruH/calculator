@@ -247,5 +247,56 @@ function updateDecimalButton() {
     }
 }
 
-// ── WIRE UP DECIMAL BUTTON ──
+// Decimal button
 document.getElementById('decimal').addEventListener('click', handleDecimal);
+
+// Keyboard Function
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+
+    if (key >= '0' && key <= '9') {
+        handleDigit(key);
+        animateButton(`[data-digit="${key}"]`);
+        return;
+    }
+
+    if (key === '+' || key === '-' || key === '*' || key === '/') {
+        handleOperator(key);
+        animateButton(`[data-operator="${key}"]`);
+        return;
+    }
+
+    if (key === 'Enter' || key === '=') {
+        handleEquals();
+        animateButton('#equals');
+        return;
+    }
+
+    if (key === '.') {
+        handleDecimal();
+        animateButton('#decimal');
+        return;
+    }
+
+    if (key === 'Backspace') {
+        handleBackspace();
+        animateButton('#backspace');
+        return;
+    }
+
+    if (key === 'Escape' || key === 'Delete') {
+        handleClear();
+        animateButton('#clear');
+        return;
+    }
+});
+
+
+// Visually flashes the corresponding button when a key is pressed
+function animateButton(selector) {
+    const button = document.querySelector(selector);
+    if (!button) return;
+
+    button.classList.add('key-pressed');
+    setTimeout(() => button.classList.remove('key-pressed'), 100);
+}
